@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon CV & Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur mon site</h1>
+        <nav>
+            <ul>
+                <li><a href="#cv">Mon CV</a></li>
+                <li><a href="#blog">Mon Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cv">
+            <h2>Mon CV</h2>
+            <p>Voici mes compétences et mon expérience professionnelle...</p>
+        </section>
+
+        <section id="blog">
+            <h2>Mon Blog</h2>
+            <article>
+                <h3>Titre de l'article</h3>
+                <p>Contenu de l'article...</p>
+            </article>
+            <article>
+                <h3>Titre de l'article 2</h3>
+                <p>Contenu de l'article 2...</p>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contact-form">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Jean Thisquen. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
