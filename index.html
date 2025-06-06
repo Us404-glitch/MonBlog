@@ -1,220 +1,57 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Un blog visuellement séduisant qui s'adapte à tous les appareils">
-    <title>Délice Visuel | Blog</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple-Style Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="navbar">
+        <div class="logo">MonNom</div>
+        <button id="theme-toggle">🌙</button>
+      </nav>
+      <section class="hero-content">
+        <h1 class="fade-in">Bonjour, je suis un Créateur Digital</h1>
+        <p class="fade-in-delay">Portfolio inspiré par Apple — sobre, fluide, élégant.</p>
+      </section>
+    </header>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            background-color: #f1f1f1;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px;
-            box-shadow: 0 2px 4px 0 #e0e0e0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
-        }
-        .nav a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .nav a:hover {
-            color: #f16e5e;
-        }
-        .nav-brand {
-            font-size: 2rem;
-            padding: 0 10px;
-        }
-        .hero {
-            height: 100vh;
-            background-image: url('https://source.unsplash.com/random?city,night');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-align: center;
-            font-weight: bold;
-        }
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-        .button {
-            padding: 10px 20px;
-            background-color: #f16e5e;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #f8b2b2;
-        }
-        .posts-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 80px;
-        }
-        .post {
-            width: 300px;
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px 0 #e0e0e0;
-        }
-        .post img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .post h2 {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-        .post p {
-            font-size: 16px;
-            margin: 0 0 10px;
-            text-align: justify;
-        }
-        .post .info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .info-item {
-            font-size: 14px;
-            color: #666;
-        }
-        .info-item span {
-            margin-right: 5px;
-        }
-        .post:hover {
-            transform: scale(1.02);
-            transition: transform 0.3s ease;
-        }
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-            }
-            .nav a {
-                padding: 5px 0;
-            }
-            .posts-container {
-                flex-direction: column;
-            }
-            .post {
-                width: 100%;
-                margin: 20px 0;
-            }
-        }
-    </style>
-    <script>
-        const button = document.querySelector('.button');
-        button.addEventListener('click', () => {
-            const hero = document.querySelector('.hero');
-            hero.classList.toggle('dark');
-            if (hero.classList.contains('dark')) {
-                button.innerHTML = 'Retour à la lumière';
-            } else {
-                button.innerHTML = 'Basculer dans les Ténèbures';
-            }
-        });
-    </script>
-</head>
-<body>
-    <nav class="nav">
-        <div class="nav-brand">Délice Visuel</div>
-        <ul class="nav-items">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Articles</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="hero" id="hero">
-        <h1>Un blog qui séduit les yeux</h1>
-        <p>Découvrez les articles les plus captivants dans les domaines de la photographie, de la cuisine et des voyages.</p>
-        <button class="button" onclick="toggleTheme()">Basculer dans les Ténèbures</button>
-    </div>
-
-    <div class="posts-container container">
-        <div class="post">
-            <img src="https://source.unsplash.com/random?city,day" alt="Ville en journée">
-            <h2>Titre de l'article 1</h2>
-            <p>Description de l'article 1...</p>
-            <div class="info">
-                <div class="info-item">Auteur: Nom de l'auteur</div>
-                <div class="info-item">Date: 01/01/2023</div>
-            </div>
+    <main>
+      <section class="projects">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="card-grid">
+          <div class="card">Projet 1</div>
+          <div class="card">Projet 2</div>
+          <div class="card">Projet 3</div>
         </div>
-        <div class="post">
-            <img src="https://source.unsplash.com/random?travel,day" alt="Voyage en journée">
-            <h2>Titre de l'article 2</h2>
-            <p>Description de l'article 2...</p>
-            <div class="info">
-                <div class="info-item">Auteur: Nom de l'auteur</div>
-                <div class="info-item">Date: 02/02/2023</div>
-            </div>
-        </div>
-        <div class="post">
-            <img src="https://source.unsplash.com/random?food,night" alt="Cuisine de nuit">
-            <h2>Titre de l'article 3</h2>
-            <p>Description de l'article 3...</p>
-            <div class="info">
-                <div class="info-item">Auteur: Nom de l'auteur</div>
-                <div class="info-item">Date: 03/03/2023</div>
-            </div>
-        </div>
-        <div class="post">
-            <img src="https://source.unsplash.com/random?photography,day" alt="Photographie en journée">
-            <h2>Titre de l'article 4</h2>
-            <p>Description de l'article 4...</p>
-            <div class="info">
-                <div class="info-item">Auteur: Nom de l'auteur</div>
-                <div class="info-item">Date: 04/04/2023</div>
-            </div>
-        </div>
-    </div>
+      </section>
 
-    <script>
-        function toggleTheme() {
-            const hero = document.getElementById('hero');
-            hero.classList.toggle('dark');
-        }
-    </script>
+      <section class="articles">
+        <h2 class="section-title">Articles</h2>
+        <div class="article-list">
+          <article class="article-card">Article 1</article>
+          <article class="article-card">Article 2</article>
+          <article class="article-card">Article 3</article>
+        </div>
+      </section>
 
-</body>
+      <section class="contact">
+        <h2 class="section-title">Contact</h2>
+        <form class="contact-form">
+          <input type="text" placeholder="Votre nom" required />
+          <input type="email" placeholder="Votre email" required />
+          <textarea placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 MonNom. Design inspiré par Apple.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
