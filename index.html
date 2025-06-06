@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,30 +205,27 @@
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
+        position: fixed;
+        top: 70px;
+        right: 20px;
         background: var(--color-bg);
-        width: 200px;
-        transform: translateX(100%);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        pointer-events: none;
-        }
-
-      nav ul.show {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
+        width: 220px;
+        padding: 1rem;
+        display: none;
+        z-index: 999;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
       }
-
 
       body.dark nav ul {
         background: var(--color-bg-dark);
       }
 
-      
+      nav ul.show {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+      }
 
 
 
@@ -252,17 +250,8 @@
   <div class="progress-bar" id="progress-bar"></div>
   <header class="navbar">
     <div class="logo">Portfolio</div>
-    <button 
-      class="menu-toggle" 
-      id="menu-toggle"
-      aria-label="Menu de navigation"
-      aria-expanded="false"
-      aria-controls="nav-links"
-    >
-      ☰
-    </button>
-
-    <nav role="navigation" aria-label="Menu principal">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav>
       <ul id="nav-links">
         <li><a href="#projects">Projets</a></li>
         <li><a href="#articles">Articles</a></li>
@@ -325,36 +314,9 @@
 
     const toggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    
-    function closeMenu() {
-      toggle.setAttribute('aria-expanded', 'false');
-      navLinks.classList.remove('show');
-    }
-    
-    toggle.addEventListener('click', (e) => {
-      e.stopPropagation(); // empêche la propagation vers window
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isExpanded));
+    toggle.addEventListener('click', () => {
       navLinks.classList.toggle('show');
     });
-    
-    // Ferme le menu quand on clique sur un lien
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-    
-    // Ferme le menu si on clique ailleurs
-    window.addEventListener('click', (e) => {
-      if (navLinks.classList.contains('show') && !navLinks.contains(e.target) && e.target !== toggle) {
-        closeMenu();
-      }
-    });
-    
-    
 
     const progressBar = document.getElementById('progress-bar');
     window.addEventListener('scroll', () => {
