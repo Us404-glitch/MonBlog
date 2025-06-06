@@ -246,12 +246,18 @@
   </div>
 
   <h2 class="section-title" id="contact">Me contacter</h2>
-  <form class="contact-form fade-in-on-scroll">
-    <input type="text" placeholder="Votre nom">
-    <input type="email" placeholder="Votre email">
-    <textarea rows="5" placeholder="Votre message"></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
+  <form class="contact-form fade-in-on-scroll" action="https://formsubmit.co/thisquenjean@gmail.com" method="POST">
+  <input type="text" name="name" placeholder="Votre nom" required>
+  <input type="email" name="email" placeholder="Votre email" required>
+  <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+
+  <!-- Sécurité anti-bots -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://ton-domaine-ou-github.io/merci.html">
+
+  <button type="submit">Envoyer</button>
+</form>
+
 
   <footer class="footer">
     © 2025 - MonPortfolio. Tous droits réservés.
