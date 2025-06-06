@@ -1,5 +1,1 @@
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    alert("Message envoyé avec succès !");
-    this.reset();
-});
+//Here is nothing special...
