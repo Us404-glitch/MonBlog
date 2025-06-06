@@ -15,11 +15,17 @@
       --color-muted-dark: #a1a1a6;
     }
 
-    body {
+    * {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
       background-color: var(--color-bg);
       color: var(--color-text);
+      scroll-behavior: smooth;
       transition: background-color 0.3s, color 0.3s;
     }
 
@@ -28,20 +34,55 @@
       color: var(--color-text-dark);
     }
 
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--color-accent);
+      width: 0;
+      z-index: 9999;
+    }
+
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: transparent;
       position: sticky;
       top: 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
       z-index: 100;
+    }
+
+    body.dark .navbar {
+      background: rgba(29, 29, 31, 0.8);
     }
 
     .logo {
       font-weight: bold;
       font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
     }
 
     #theme-toggle {
@@ -57,26 +98,23 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #e6e9f0, #eef1f5);
       text-align: center;
       padding: 2rem;
+      background: linear-gradient(135deg, #e6e9f0, #eef1f5);
     }
 
     body.dark .hero {
       background: linear-gradient(135deg, #2c2c2e, #1c1c1e);
     }
 
-    .hero-content h1 {
-      font-size: 2.5rem;
+    .hero h1 {
+      font-size: 3rem;
       margin-bottom: 1rem;
-      animation: fadeIn 1s ease forwards;
     }
 
-    .hero-content p {
+    .hero p {
       font-size: 1.2rem;
       color: var(--color-muted);
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 0.5s;
     }
 
     .section-title {
@@ -99,11 +137,13 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .card:hover, .article-card:hover {
-      transform: translateY(-5px) scale(1.02) rotateX(1deg);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     body.dark .card, body.dark .article-card {
@@ -150,104 +190,104 @@
       color: var(--color-muted);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .fade-in-delay {
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 0.5s;
-    }
-
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--color-bg);
+        width: 200px;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
-      .hero-content p {
-        font-size: 1rem;
+
+      nav ul.show {
+        display: flex;
       }
-      .section-title {
-        font-size: 1.5rem;
+
+      .menu-toggle {
+        display: block;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">MyPortfolio</div>
-    <button id="theme-toggle">🌓</button>
-  </nav>
+  <div class="progress-bar" id="progress-bar"></div>
+  <header class="navbar">
+    <div class="logo">MonPortfolio</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <h1>Bienvenue sur mon site</h1>
-      <p>Un design inspiré d'Apple, moderne et épuré.</p>
-    </div>
+    <h1>Bienvenue sur mon site</h1>
+    <p>Créons quelque chose d'incroyable ensemble.</p>
   </section>
 
-  <h2 class="section-title">Mes Projets</h2>
-  <div class="card-grid">
+  <h2 class="section-title" id="projects">Mes projets</h2>
+  <div class="card-grid fade-in-on-scroll">
     <div class="card">Projet 1</div>
     <div class="card">Projet 2</div>
     <div class="card">Projet 3</div>
   </div>
 
-  <h2 class="section-title">Articles</h2>
-  <div class="article-list">
+  <h2 class="section-title" id="articles">Articles récents</h2>
+  <div class="article-list fade-in-on-scroll">
     <div class="article-card">Article 1</div>
     <div class="article-card">Article 2</div>
-    <div class="article-card">Article 3</div>
   </div>
 
-  <h2 class="section-title">Contact</h2>
-  <form class="contact-form">
-    <input type="text" placeholder="Votre nom" required />
-    <input type="email" placeholder="Votre email" required />
+  <h2 class="section-title" id="contact">Me contacter</h2>
+  <form class="contact-form fade-in-on-scroll">
+    <input type="text" placeholder="Votre nom">
+    <input type="email" placeholder="Votre email">
     <textarea rows="5" placeholder="Votre message"></textarea>
     <button type="submit">Envoyer</button>
   </form>
 
   <footer class="footer">
-    © 2025 - Mon Portfolio Apple-Style
+    © 2025 - MonPortfolio. Tous droits réservés.
   </footer>
 
   <script>
-    // Toggle dark mode
-    const toggleBtn = document.getElementById("theme-toggle");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
     });
 
-    // Animate elements on scroll
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("fade-in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
 
-    document.querySelectorAll(".card, .article-card, .section-title, .hero-content h1, .hero-content p").forEach((el) => {
-      el.classList.add("fade-in");
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
       observer.observe(el);
     });
   </script>
